@@ -55,6 +55,20 @@ local function takeOffSuit()
     ClearPedTasks(cache.ped)
 end
 
+local function DrawText(text)
+    ClearPedTasks(cache.ped)
+	SetTextFont(4)
+	SetTextProportional(true)
+	SetTextScale(0.0, 0.45)
+	SetTextDropshadow(1, 0, 0, 0, 255)
+	SetTextEdge(1, 0, 0, 0, 255)
+	SetTextDropShadow()
+	SetTextOutline()
+	BeginTextCommandDisplayText("STRING")
+	AddTextComponentSubstringPlayerName(text)
+    EndTextCommandDisplayText(0.45, 0.90)
+end
+
 local function putOnSuit()
     if oxygenLevel <= 0 then
         exports.qbx_core:Notify(Lang:t("error.need_otube"), 'error')
@@ -111,7 +125,7 @@ local function putOnSuit()
         CreateThread(function()
             while currentGear.enabled do
                 if IsPedSwimmingUnderWater(cache.ped) then
-                    DrawText2D(oxygenLevel..'⏱', vec2(0.45, 0.90), 1.0, 1.0, 0.45)
+                    DrawText(oxygenLevel..'⏱')
                 end
                 Wait(0)
             end
