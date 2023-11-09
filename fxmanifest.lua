@@ -10,6 +10,8 @@ shared_script {
     'locales/en.lua',
     'locales/*.lua',
     'config.lua',
+    '@qbx_core/import.lua',
+    'qbx_core:utils',
 }
 
 server_scripts {
