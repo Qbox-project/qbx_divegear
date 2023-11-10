@@ -22,12 +22,25 @@ lib.callback.register('qbx_divegear:client:fillTank', function()
         return false
     end
 
-    oxygenLevel = Config.OxygenLevel
-    exports.qbx_core:Notify(Lang:t("success.tube_filled"), 'success')
-    if currentGear.enabled then
-        enableScuba()
+    if lib.progressBar({
+        duration = Config.RefillTankTimeMs,
+        label = Lang:t("info.filling_air"),
+        useWhileDead = false,
+        canCancel = true,
+        anim = {
+            dict = "clothingshirt",
+            clip = "try_shirt_positive_d",
+            blendIn = 8.0
+        }
+    }) then
+
+        oxygenLevel = Config.OxygenLevel
+        exports.qbx_core:Notify(Lang:t("success.tube_filled"), 'success')
+        if currentGear.enabled then
+            enableScuba()
+        end
+        return true
     end
-    return true
 end)
 
 local function deleteGear()
@@ -61,7 +74,7 @@ end
 
 local function takeOffSuit()
     if lib.progressBar({
-        duration = 5000,
+        duration = Config.TakeOffSuitTimeMs,
         label = Lang:t("info.pullout_suit"),
         useWhileDead = false,
         canCancel = true,
@@ -134,7 +147,7 @@ local function putOnSuit()
     end
 
     if lib.progressBar({
-        duration = 5000,
+        duration = Config.PutOnSuitTimeMs,
         label = Lang:t("info.put_suit"),
         useWhileDead = false,
         canCancel = true,

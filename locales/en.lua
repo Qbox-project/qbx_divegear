@@ -12,6 +12,7 @@ local Translations = {
     info = {
         put_suit = "Putting on your diving suit...",
         pullout_suit = "Taking off your diving suit...",
+        filling_air = "Filling air"
     },
     warning = {
         oxygen_one_minute = "You have less than one minute of air remaining!",
