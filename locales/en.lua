@@ -3,7 +3,7 @@ local Translations = {
         canceled = "Canceled",
         not_standing_up = "You need to be on solid ground to put this on...",
         need_otube = "you need to refill your oxygen! Get a replacement air supply!",
-        oxygenlevel = "Your air level is %{oxygenlevel}, it must be at 0 to refill!",
+        underwater = "Cannot do this underwater",
     },
     success = {
         took_out = "You took your diving gear off.",

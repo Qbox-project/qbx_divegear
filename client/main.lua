@@ -17,8 +17,8 @@ local function disableScuba()
 end
 
 lib.callback.register('qbx_divegear:client:fillTank', function()
-    if oxygenLevel ~= 0 then
-        exports.qbx_core:Notify(Lang:t("error.oxygenlevel", {oxygenlevel = oxygenLevel}), 'error')
+    if IsPedSwimmingUnderWater(cache.ped) then
+        exports.qbx_core:Notify(Lang:t("error.underwater", {oxygenlevel = oxygenLevel}), 'error')
         return false
     end
 
