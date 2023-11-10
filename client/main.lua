@@ -115,7 +115,6 @@ local function startOxygenLevelDecrementerThread()
                 if oxygenLevel == 0 then
                     disableScuba()
                     TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
-                    break
                 end
             end
             Wait(1000)
