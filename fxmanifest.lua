@@ -10,20 +10,17 @@ shared_scripts {
     '@qbx_core/shared/locale.lua',
     'locales/en.lua',
     'locales/*.lua',
-    'config.lua',
 }
 
 modules {
     'qbx_core:utils',
 }
 
-server_scripts {
-    'server/*',
-}
+server_script 'server/main.lua'
 
-client_scripts {
-    'client/*'
-}
+client_script 'client/main.lua'
+
+file 'config/client.lua'
 
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'

@@ -1,3 +1,5 @@
+local Config = require 'config.client'
+
 local currentGear = {
     mask = 0,
     tank = 0,
@@ -66,7 +68,7 @@ local function attachGear()
     currentGear.tank = CreateObject(tankModel, 1.0, 1.0, 1.0, true, true, false)
     local bone1 = GetPedBoneIndex(cache.ped, 24818)
     AttachEntityToEntity(currentGear.tank, cache.ped, bone1, -0.25, -0.25, 0.0, 180.0, 90.0, 0.0, true, true, false, false, 2, true)
-    
+
     currentGear.mask = CreateObject(maskModel, 1.0, 1.0, 1.0, true, true, false)
     local bone2 = GetPedBoneIndex(cache.ped, 12844)
     AttachEntityToEntity(currentGear.mask, cache.ped, bone2, 0.0, 0.0, 0.0, 180.0, 90.0, 0.0, true, true, false, false, 2, true)
