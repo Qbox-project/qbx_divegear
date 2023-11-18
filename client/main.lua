@@ -1,4 +1,4 @@
-local Config = require 'config.client'
+local config = require 'config.client'
 
 local currentGear = {
     mask = 0,
@@ -20,24 +20,24 @@ end
 
 lib.callback.register('qbx_divegear:client:fillTank', function()
     if IsPedSwimmingUnderWater(cache.ped) then
-        exports.qbx_core:Notify(Lang:t("error.underwater", {oxygenlevel = oxygenLevel}), 'error')
+        exports.qbx_core:Notify(Lang:t('error.underwater', {oxygenlevel = oxygenLevel}), 'error')
         return false
     end
 
     if lib.progressBar({
-        duration = Config.RefillTankTimeMs,
-        label = Lang:t("info.filling_air"),
+        duration = config.RefillTankTimeMs,
+        label = Lang:t('info.filling_air'),
         useWhileDead = false,
         canCancel = true,
         anim = {
-            dict = "clothingshirt",
-            clip = "try_shirt_positive_d",
+            dict = 'clothingshirt',
+            clip = 'try_shirt_positive_d',
             blendIn = 8.0
         }
     }) then
 
-        oxygenLevel = Config.OxygenLevel
-        exports.qbx_core:Notify(Lang:t("success.tube_filled"), 'success')
+        oxygenLevel = config.startingOxygenLevel
+        exports.qbx_core:Notify(Lang:t('success.tube_filled'), 'success')
         if currentGear.enabled then
             enableScuba()
         end
@@ -76,13 +76,13 @@ end
 
 local function takeOffSuit()
     if lib.progressBar({
-        duration = Config.TakeOffSuitTimeMs,
-        label = Lang:t("info.pullout_suit"),
+        duration = config.TakeOffSuitTimeMs,
+        label = Lang:t('info.pullout_suit'),
         useWhileDead = false,
         canCancel = true,
         anim = {
-            dict = "clothingshirt",
-            clip = "try_shirt_positive_d",
+            dict = 'clothingshirt',
+            clip = 'try_shirt_positive_d',
             blendIn = 8.0
         }
     }) then
@@ -90,29 +90,16 @@ local function takeOffSuit()
         SetPedMaxTimeUnderwater(cache.ped, 50.00)
         currentGear.enabled = false
         deleteGear()
-        exports.qbx_core:Notify(Lang:t("success.took_out"))
-        TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
+        exports.qbx_core:Notify(Lang:t('success.took_out'))
+        TriggerServerEvent('InteractSound_SV:PlayOnSource', nil, 0.25)
     end
-end
-
-local function drawText(text)
-	SetTextFont(4)
-	SetTextProportional(true)
-	SetTextScale(0.0, 0.45)
-	SetTextDropshadow(1, 0, 0, 0, 255)
-	SetTextEdge(1, 0, 0, 0, 255)
-	SetTextDropShadow()
-	SetTextOutline()
-	BeginTextCommandDisplayText("STRING")
-	AddTextComponentSubstringPlayerName(text)
-    EndTextCommandDisplayText(0.45, 0.90)
 end
 
 local function startOxygenLevelDrawTextThread()
     CreateThread(function()
         while currentGear.enabled do
             if IsPedSwimmingUnderWater(cache.ped) then
-                drawText(oxygenLevel..'⏱')
+                DrawText2D(oxygenLevel..'⏱', vec2(1.0, 1.42), 1.0, 1.0, 0.45, 4)
             end
             Wait(0)
         end
@@ -124,12 +111,12 @@ local function startOxygenLevelDecrementerThread()
         while currentGear.enabled do
             if IsPedSwimmingUnderWater(cache.ped) and oxygenLevel > 0 then
                 oxygenLevel -= 1
-                if oxygenLevel % 10 == 0 and oxygenLevel ~= Config.OxygenLevel then
-                    TriggerServerEvent("InteractSound_SV:PlayOnSource", "breathdivingsuit", 0.25)
+                if oxygenLevel % 10 == 0 and oxygenLevel ~= config.startingOxygenLevel then
+                    TriggerServerEvent('InteractSound_SV:PlayOnSource', 'breathdivingsuit', 0.25)
                 end
                 if oxygenLevel == 0 then
                     disableScuba()
-                    TriggerServerEvent("InteractSound_SV:PlayOnSource", nil, 0.25)
+                    TriggerServerEvent('InteractSound_SV:PlayOnSource', nil, 0.25)
                 end
             end
             Wait(1000)
@@ -139,23 +126,23 @@ end
 
 local function putOnSuit()
     if oxygenLevel <= 0 then
-        exports.qbx_core:Notify(Lang:t("error.need_otube"), 'error')
+        exports.qbx_core:Notify(Lang:t('error.need_otube'), 'error')
         return
     end
 
     if IsPedSwimming(cache.ped) or cache.vehicle then
-        exports.qbx_core:Notify(Lang:t("error.not_standing_up"), 'error')
+        exports.qbx_core:Notify(Lang:t('error.not_standing_up'), 'error')
         return
     end
 
     if lib.progressBar({
-        duration = Config.PutOnSuitTimeMs,
-        label = Lang:t("info.put_suit"),
+        duration = config.PutOnSuitTimeMs,
+        label = Lang:t('info.put_suit'),
         useWhileDead = false,
         canCancel = true,
         anim = {
-            dict = "clothingshirt",
-            clip = "try_shirt_positive_d",
+            dict = 'clothingshirt',
+            clip = 'try_shirt_positive_d',
             blendIn = 8.0
         }
     }) then
@@ -163,7 +150,7 @@ local function putOnSuit()
         attachGear()
         enableScuba()
         currentGear.enabled = true
-        TriggerServerEvent("InteractSound_SV:PlayOnSource", "breathdivingsuit", 0.25)
+        TriggerServerEvent('InteractSound_SV:PlayOnSource', 'breathdivingsuit', 0.25)
         startOxygenLevelDecrementerThread()
         startOxygenLevelDrawTextThread()
     end
