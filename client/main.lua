@@ -25,7 +25,7 @@ lib.callback.register('qbx_divegear:client:fillTank', function()
     end
 
     if lib.progressBar({
-        duration = config.RefillTankTimeMs,
+        duration = config.refillTankTimeMs,
         label = Lang:t('info.filling_air'),
         useWhileDead = false,
         canCancel = true,
@@ -35,7 +35,6 @@ lib.callback.register('qbx_divegear:client:fillTank', function()
             blendIn = 8.0
         }
     }) then
-
         oxygenLevel = config.startingOxygenLevel
         exports.qbx_core:Notify(Lang:t('success.tube_filled'), 'success')
         if currentGear.enabled then
@@ -76,7 +75,7 @@ end
 
 local function takeOffSuit()
     if lib.progressBar({
-        duration = config.TakeOffSuitTimeMs,
+        duration = config.takeOffSuitTimeMs,
         label = Lang:t('info.pullout_suit'),
         useWhileDead = false,
         canCancel = true,
@@ -91,7 +90,7 @@ local function takeOffSuit()
         currentGear.enabled = false
         deleteGear()
         exports.qbx_core:Notify(Lang:t('success.took_out'))
-        TriggerServerEvent('InteractSound_SV:PlayOnSource', nil, 0.25)
+        -- Stop breathing suit audio
     end
 end
 
@@ -112,11 +111,11 @@ local function startOxygenLevelDecrementerThread()
             if IsPedSwimmingUnderWater(cache.ped) and oxygenLevel > 0 then
                 oxygenLevel -= 1
                 if oxygenLevel % 10 == 0 and oxygenLevel ~= config.startingOxygenLevel then
-                    TriggerServerEvent('InteractSound_SV:PlayOnSource', 'breathdivingsuit', 0.25)
+                    -- Initiate breathing suit audio
                 end
                 if oxygenLevel == 0 then
                     disableScuba()
-                    TriggerServerEvent('InteractSound_SV:PlayOnSource', nil, 0.25)
+                    -- Stop breathing suit audio
                 end
             end
             Wait(1000)
@@ -136,7 +135,7 @@ local function putOnSuit()
     end
 
     if lib.progressBar({
-        duration = config.PutOnSuitTimeMs,
+        duration = config.putOnSuitTimeMs,
         label = Lang:t('info.put_suit'),
         useWhileDead = false,
         canCancel = true,
@@ -150,7 +149,7 @@ local function putOnSuit()
         attachGear()
         enableScuba()
         currentGear.enabled = true
-        TriggerServerEvent('InteractSound_SV:PlayOnSource', 'breathdivingsuit', 0.25)
+        -- Initiate breathing suit audio
         startOxygenLevelDecrementerThread()
         startOxygenLevelDrawTextThread()
     end
