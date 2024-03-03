@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "Þú þarft að standa upp til að setja á þig köfunarbúnaðinn",
+        "need_otube": "You need to refill your oxygen! Get a replacement air supply!",
+        "underwater": "You cannot do this underwater..."
+    },
+    "success": {
+        "took_out": "Þú tókst blautbúninginn þinn af þér",
+        "tube_filled": "You've successfully refilled your air tank!"
+    },
+    "info": {
+        "put_suit": "Farðu í köfunargalla",
+        "pullout_suit": "Dragðu fram köfunargalla..",
+        "filling_air": "Filling air..."
+    }
+}

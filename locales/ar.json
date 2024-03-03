@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "/divingsuit لنزع بدلة الغوص الخاصة بك",
+        "need_otube": "أنت لا ترتدي معدات الغوص",
+        "underwater": "الوقوف لاستخدام خزان الأكسجين"
+    },
+    "success": {
+        "took_out": "جاري اخد لباس الغوض",
+        "tube_filled": "You've successfully refilled your air tank!"
+    },
+    "info": {
+        "put_suit": "وضعت  بدلة الغوص",
+        "pullout_suit": "ترك بدلة الغوص",
+        "filling_air": "Filling air..."
+    }
+}

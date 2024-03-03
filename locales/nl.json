@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "Je moet rechtop staan ​​om de duikuitrusting aan te trekken",
+        "need_otube": "You need to refill your oxygen! Get a replacement air supply!",
+        "underwater": "You cannot do this underwater..."
+    },
+    "success": {
+        "took_out": "Je hebt je wetsuit uitgedaan",
+        "tube_filled": "You've successfully refilled your air tank!"
+    },
+    "info": {
+        "put_suit": "Doe een duikpak aan",
+        "pullout_suit": "Trek een duikpak uit..",
+        "filling_air": "Filling air..."
+    }
+}
