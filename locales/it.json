@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "Devi essere in piedi per indossare l'attrezzatura subacquea",
+        "need_otube": "You need to refill your oxygen! Get a replacement air supply!",
+        "underwater": "You cannot do this underwater..."
+    },
+    "success": {
+        "took_out": "Ti sei tolto la muta da sub",
+        "tube_filled": "You've successfully refilled your air tank!"
+    },
+    "info": {
+        "put_suit": "Indossando muta da sub..",
+        "pullout_suit": "Rimuovendo muta da sub..",
+        "filling_air": "Filling air..."
+    }
+}

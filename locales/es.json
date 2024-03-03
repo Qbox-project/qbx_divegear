@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "Tienes que estar de pie para ponerte el equipo de buceo",
+        "need_otube": "You need to refill your oxygen! Get a replacement air supply!",
+        "underwater": "You cannot do this underwater..."
+    },
+    "success": {
+        "took_out": "Te quitaste tu traje de neopreno",
+        "tube_filled": "You've successfully refilled your air tank!"
+    },
+    "info": {
+        "put_suit": "Ponerse equipo de buceo",
+        "pullout_suit": "Saca un equipo de buceo..",
+        "filling_air": "Filling air..."
+    }
+}
