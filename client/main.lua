@@ -71,6 +71,8 @@ local function attachGear()
     currentGear.mask = CreateObject(maskModel, 1.0, 1.0, 1.0, true, true, false)
     local bone2 = GetPedBoneIndex(cache.ped, 12844)
     AttachEntityToEntity(currentGear.mask, cache.ped, bone2, 0.0, 0.0, 0.0, 180.0, 90.0, 0.0, true, true, false, false, 2, true)
+    SetModelAsNoLongerNeeded(maskModel)
+    SetModelAsNoLongerNeeded(tankModel)
 end
 
 local function takeOffSuit()
