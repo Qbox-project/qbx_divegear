@@ -3,7 +3,7 @@ game 'gta5'
 
 description 'items to help players breathe and move underwater'
 repository 'https://github.com/Qbox-project/qbx_divegear'
-version '1.0.0'
+version '1.0.1'
 
 ox_lib 'locale'
 
