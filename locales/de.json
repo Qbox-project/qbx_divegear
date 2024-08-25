@@ -1,0 +1,16 @@
+{
+    "error": {
+        "not_standing_up": "Du musst auf festem Boden stehen, um das anzulegen...",
+        "need_otube": "Du musst deinen Sauerstoff auffüllen! Hol dir eine neue Sauerstoffflasche!",
+        "underwater": "Du kannst das nicht unter Wasser tun..."
+    },
+    "success": {
+        "took_out": "Du hast deine Ausrüstung abgelegt!",
+        "tube_filled": "Du hast deinen Sauerstofftank erfolgreich aufgefüllt!"
+    },
+    "info": {
+        "put_suit": "Tauchanzug wird angezogen...",
+        "pullout_suit": "Tauchanzug wird ausgezogen...",
+        "filling_air": "Sauerstoff wird aufgefüllt..."
+    }
+}
