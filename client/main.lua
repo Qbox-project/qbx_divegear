@@ -115,7 +115,7 @@ local function startOxygenLevelDecrementerThread()
     CreateThread(function()
         while currentGear.enabled do
             if IsPedSwimmingUnderWater(cache.ped) and oxygenLevel > 0 then
-                oxygenLevel -= 1
+                oxygenLevel -= config.decayRate
                 if oxygenLevel % 10 == 0 and oxygenLevel ~= config.startingOxygenLevel then
                     -- Initiate breathing suit audio
                 end
