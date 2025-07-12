@@ -9,6 +9,7 @@ Works with [qbx_diving](https://github.com/Qbox-project/qbx_diving/), a coral di
 # Features
 
 - Able to set the length of time an air tank will refill your tank
+- Able to configure the rate of decay of the oxygen tank (to allow longer time in the water)
 - Limitations for refilling underwater (to limit endless use of air tanks)
 - animations and timers during refill
 - Text that displays current air time at the bottom of the player's screen when underwater and wearing gear
